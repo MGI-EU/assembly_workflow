@@ -7,16 +7,18 @@ Worflow steps:
 5. Quality control (QUAST, MERQURY, Yak)
 
 ### Dependencies
+1. conda
 1. Snakemake
-2. Singularity
+3. Singularity
   
 
 ### Installation
 ```bash
-# Install Snakemake
-conda install -c bioconda snakemake
 
-# Install Singularity
+# Install Snakemake and Singularity
+conda create -n assembly_workflow
+conda activate assembly_workflow
+conda install -c bioconda snakemake
 conda install -c conda-forge singularity
 
 # Pull singularity container
@@ -32,7 +34,7 @@ git clone https://github.com/eamozheiko/assembly_workflow.git
 
 
 #### Input:
-    HiFi, ONT, paternal NGS, maternal NGS, child NGS (Assembly parameters automaticaly depends on input)
+HiFi, ONT, paternal NGS, maternal NGS, child NGS (Assembly parameters automaticaly depends on input)
     
 #### Output:
 
@@ -40,40 +42,50 @@ git clone https://github.com/eamozheiko/assembly_workflow.git
     
 #### Features:
 
-1. Possible input
-a. directory with fastq
-b. .fastq, .fastq.gz
-c. .fofn
+1. **Possible Input:**
+   a. Directory with fastq files
+   b. .fastq, .fastq.gz
+   c. .fofn
 
-2. Selection of correction tool in config (only Ratatosk now), or nocorrection mode if "correction" variable not specified in config
-Example, type in config: correction: 'ratatosk'
+2. **Selection of Correction Tool in Config:**
+   - Currently, only Ratatosk is available.
+   - Alternatively, use no-correction mode if "correction" variable is not specified in config.
+     - Example: In config, type correction: 'ratatosk'
 
-3. Selection of assembly tool (verkko, shasta, hifiasm)
-Example, type in config: assembly: 'verkko'
+3. **Selection of Assembly Tool:**
+   - Available options: verkko, shasta, hifiasm.
+     - Example: In config, type assembly: 'verkko'
 
-4. Optional min contig filter (0, by default)
+4. **Optional Min Contig Filter:**
+   - Default is 0.
 
-5. QC of assembly: QUAST, Merqury, Yak
-  a. N50, NG50
-  b. Contig count
-  c. K-mers completeness
-  d. QV
-  e. Switch error
-  f. Hamming error
+5. **QC of Assembly: QUAST, Merqury, Yak**
+   a. N50, NG50
+   b. Contig count
+   c. K-mers completeness
+   d. QV
+   e. Switch error
+   f. Hamming error
 
 #### Usage Cluster execution
 
 Example:
 ```bash
-source /hwfssz8/MGI_LATVIA/BIT/mgi_lvprod/eamozheiko/soft/miniconda3/bin/activate
-conda activate snakemake
-PATH_TO_SMK=/media/evgeniy/OS/fastq/asm_smk_v1.3
+conda activate assembly_workflow
+PATH_TO_SMK=/home/user/assembly_workflow
 SFILE=${PATH_TO_SMK}/main.smk
 CLUSTER_CONFIG=${PATH_TO_SMK}/cluster.yaml
 CONFIG=${PATH_TO_SMK}/config.yaml
 snakemake \
---snakefile ${SFILE} \
---configfile ${CONFIG} ${CLUSTER_CONFIG} \
---use-singularity \
---cores 2
+    --use-singularity \
+    --snakefile ${SFILE} \
+    --configfile ${CONFIG} ${CLUSTER_CONFIG} \
+    --cluster-config ${CLUSTER_CONFIG} \
+    --jobs 10 \
+    --keep-going \
+    --rerun-incomplete \
+    --latency-wait 60 \
+    --use-singularity \
+    --singularity-args "--bind /path/to/you/data:/data" \
+    --cluster "qsub -V -cwd -P {cluster.project} -q {cluster.queue} -l vf={cluster.mem},p={cluster.cores} -binding linear:{cluster.cores} -o {cluster.output} -e {cluster.error}"
 ```

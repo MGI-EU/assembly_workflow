@@ -1,13 +1,14 @@
-# Edit here necessary resources for rules
 localrules: all
 
+# Edit here info about you cluster "YOU_PROJECT" and "YOU_QUEUE"
 __default__:
-  project: "MGI_LATVIA"
-  queue: "mgi.q"
+  project: "YOU_PROJECT"
+  queue: "YOU_QUEUE"
   workdir: "./"
   mem: "60G"
   cores: 4
 
+# Edit here necessary resources for rules
 filter_contigs:
   mem: "10G"
   cores: 2
