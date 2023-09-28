@@ -1,0 +1,29 @@
+outdir: '/path/to/out/dir'
+
+# Edit paths to fastq data. This paths can be directories with fastq/fastq.gz, file of file names .fofn or path to one fastq/fastq.gz file
+hifi: '/path/to/hifi/fastq'
+ont: '/path/to/ont/fastq'
+short: '/path/to/child/ngs/fastq'
+paternal_short: '/path/to/paternal/ngs/fastq'
+maternal_short: '/path/to/maternal/ngs/fastq'
+
+# "polish_model" neccesary if "polish_ont" specified
+path_to_reference: '/path/to/reference/fasta'
+sample: 'sample_name'
+threshold: 2000
+chromosome_count: 24
+polish_model: '/path/to/pepper/polish/model/PromethION_r941_guppy305_HAC_human.pkl'
+
+# You can delite correction, or polish rows. This will result in excluding this steps from workflow
+# assembly: shasta, verkko or hifiasm
+# correction: ratatosk (only)
+# polish_ont: ratatosk (only)
+# polish_short: pilon (only)
+correction: 'ratatosk'
+assembly: 'hifiasm'
+polish_ont: 'pepper'
+polish_short: 'pilon'
+
+# Edit path to singularity container
+singularity: '/path/to/singularity/container/asm_smk_v1.3.sif'
+

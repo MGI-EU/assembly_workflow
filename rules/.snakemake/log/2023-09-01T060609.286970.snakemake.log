@@ -1,0 +1,9 @@
+Multiple includes of /hwfssz8/MGI_LATVIA/BIT/mgi_lvprod/eamozheiko/assembly.snakemake/rules/parse.input.smk ignored
+Multiple includes of /hwfssz8/MGI_LATVIA/BIT/mgi_lvprod/eamozheiko/assembly.snakemake/rules/parse.input.smk ignored
+Multiple includes of /hwfssz8/MGI_LATVIA/BIT/mgi_lvprod/eamozheiko/assembly.snakemake/rules/parse.input.smk ignored
+Building DAG of jobs...
+MissingInputException in rule results in file /hwfssz8/MGI_LATVIA/BIT/mgi_lvprod/eamozheiko/assembly.snakemake/main.test.smk, line 95:
+Missing input files for rule results:
+    output: result/report.tsv
+    affected files:
+        quast/report.tsv

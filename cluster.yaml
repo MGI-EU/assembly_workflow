@@ -1,0 +1,124 @@
+# Edit here necessary resources for rules
+localrules: all
+
+__default__:
+  project: "MGI_LATVIA"
+  queue: "mgi.q"
+  workdir: "./"
+  mem: "60G"
+  cores: 4
+
+filter_contigs:
+  mem: "10G"
+  cores: 2
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+report:
+  mem: "10G"
+  cores: 2
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+verkko:
+  mem: "50G"
+  cores: 32
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+hifiasm:
+  mem: "50G"
+  cores: 32
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+shasta:
+  mem: "50G"
+  cores: 32
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+ratatosk:
+  mem: "100G"
+  cores: 32
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+quast:
+  mem: "60G"
+  cores: 32
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+merqury:
+  mem: "60G"
+  cores: 32
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+yak_db_trio:
+  mem: "60G"
+  cores: 32
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+yak_trio_eval:
+  mem: "60G"
+  cores: 32
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+meryl_db:
+  mem: "60G"
+  cores: 32
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+meryl_db_trio:
+  mem: "60G"
+  cores: 32
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+pepper:
+  mem: "60G"
+  cores: 32
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+
+blank_ont_polish:
+  mem: "10G"
+  cores: 2
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+pilon:
+  mem: "60G"
+  cores: 32
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
+
+blank_short_polish:
+  mem: "10G"
+  cores: 2
+  name: "{rule}"
+  output: "{rule}.o"
+  error: "{rule}.e"
+
