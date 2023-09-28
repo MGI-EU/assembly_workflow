@@ -82,9 +82,9 @@ You don't need all this fastq input, you only need HiFi or ONT as the basis of t
 #### Features:
 
 1. **Possible Input:**
-   a. Directory with fastq files
-   b. .fastq, .fastq.gz
-   c. .fofn
+   - Directory with fastq files
+   - .fastq, .fastq.gz
+   - .fofn
 
 2. **Selection of Correction Tool in Config:**
    - Currently, only Ratatosk is available.
@@ -99,12 +99,12 @@ You don't need all this fastq input, you only need HiFi or ONT as the basis of t
    - Default is 0.
 
 5. **QC of Assembly:**
-   a. N50, NG50
-   b. Contig count
-   c. K-mers completeness
-   d. QV
-   e. Switch error
-   f. Hamming error
+   - N50, NG50
+   - Contig count
+   - K-mers completeness
+   - QV
+   - Switch error
+   - Hamming error
 
 
 
