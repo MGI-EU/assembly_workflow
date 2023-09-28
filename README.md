@@ -16,10 +16,10 @@
 ```bash
 
 # Install Snakemake and Singularity
-conda create -n assembly_workflow
+conda create -n assembly_workflow -y
 conda activate assembly_workflow
-conda install -c bioconda snakemake
-conda install -c conda-forge singularity
+conda install -c bioconda snakemake -y
+conda install -c conda-forge singularity -y
 
 # Pull singularity container
 singularity pull --arch amd64 library://eamozheiko/containers/assembly_workflow:1.3
