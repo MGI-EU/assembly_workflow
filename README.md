@@ -1,5 +1,5 @@
 ## Snakemake workflow for hybrid assembly
-Workflow steps:
+### Workflow steps:
 1. Before-assembly correction (Ratatosk)
 2. Assembly (Shasta, Verkko, Hifiasm)
 3. Filtering of small contigs
