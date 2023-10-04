@@ -1,15 +1,15 @@
 ## Snakemake workflow for hybrid assembly
 ### Workflow steps:
-1. Before-assembly correction (Ratatosk)
-2. Assembly (Shasta, Verkko, Hifiasm)
+1. Before-assembly correction [Ratatosk](https://github.com/DecodeGenetics/Ratatosk)
+2. Assembly [Shasta](https://github.com/chanzuckerberg/shasta), [Verkko](https://github.com/marbl/verkko), [Hifiasm](https://github.com/chhylp123/hifiasm)
 3. Filtering of small contigs
-4. Polishing (PEPPER + Pilon)
-5. Quality control (QUAST, MERQURY, Yak)
+4. Polishing [PEPPER](https://github.com/kishwarshafin/pepper/tree/r0.1) + [Pilon](https://github.com/broadinstitute/pilon)
+5. Quality control [QUAST](https://github.com/ablab/quast), [MERQURY](https://github.com/marbl/merqury), [Yak](https://github.com/lh3/yak)
 
 ### Dependencies
-1. Conda
-1. Snakemake
-3. Singularity
+1. [Conda](https://github.com/conda/conda)
+1. [Snakemake](https://snakemake.github.io/)
+3. [Singularity](https://singularity.hpcng.org)
   
 
 ### Installation
@@ -21,8 +21,8 @@ conda activate assembly_workflow
 conda install -c bioconda snakemake -y
 conda install -c conda-forge singularity -y
 
-# Pull singularity container
-singularity pull --arch amd64 library://eamozheiko/containers/assembly_workflow:1.3
+# Pull and Coverting .sif to sandbox (Highly recommended)
+sudo singularity build --sandbox assembly_workflow/  library://eamozheiko/containers/assembly_workflow:1.4
 
 # Pull Snakemake workflow
 git clone https://github.com/eamozheiko/assembly_workflow.git
@@ -32,6 +32,7 @@ git clone https://github.com/eamozheiko/assembly_workflow.git
 To run this worflow follow this steps:
 1. Configure config.yaml and cluster.yaml
 2. Download model for PEPPER ONT polishing if necessary
+The model files for PEPPER are available here: [https://github.com/kishwarshafin/pepper/tree/r0.1/models](https://github.com/kishwarshafin/pepper/tree/r0.1/models)
 3. Edit run command
 **Example:**
 #### Cluster execution
