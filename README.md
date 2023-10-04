@@ -21,7 +21,7 @@ conda activate assembly_workflow
 conda install -c bioconda snakemake -y
 conda install -c conda-forge singularity -y
 
-# Pull and Coverting .sif to sandbox (Highly recommended)
+# Pull and Converting .sif to sandbox (Highly recommended)
 sudo singularity build --sandbox assembly_workflow/  library://eamozheiko/containers/assembly_workflow:1.4
 
 # Pull Snakemake workflow
