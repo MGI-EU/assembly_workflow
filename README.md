@@ -31,8 +31,7 @@ git clone https://github.com/eamozheiko/assembly_workflow.git
 ### Quick start
 To run this worflow follow this steps:
 1. Configure config.yaml and cluster.yaml
-2. Download model for PEPPER ONT polishing if necessary
-The model files for PEPPER are available here: [https://github.com/kishwarshafin/pepper/tree/r0.1/models](https://github.com/kishwarshafin/pepper/tree/r0.1/models)
+2. Download model for PEPPER ONT polishing if necessary. The model files for PEPPER are available here: [https://github.com/kishwarshafin/pepper/tree/r0.1/models](https://github.com/kishwarshafin/pepper/tree/r0.1/models)
 3. Edit run command
 **Example:**
 #### Cluster execution
