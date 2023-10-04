@@ -32,15 +32,24 @@ git clone https://github.com/eamozheiko/assembly_workflow.git
 To run this worflow follow this steps:
 1. Configure config.yaml and cluster.yaml
 2. Download model for PEPPER ONT polishing if necessary. The model files for PEPPER are available here: [https://github.com/kishwarshafin/pepper/tree/r0.1/models](https://github.com/kishwarshafin/pepper/tree/r0.1/models)
-3. Edit run command
+3. Edit paths
+```bash
+conda activate assembly_workflow
+
+# Edit this paths
+PATH_TO_WORKFLOW=/home/user/assembly_workflow
+MOUNT_HOST=/path/to/host/data
+MOUNT_CONTAINER=/path/to/host/data
+
+SFILE=${PATH_TO_WORKFLOW}/main.smk
+CLUSTER_CONFIG=${PATH_TO_WORKFLOW}/cluster.yaml
+CONFIG=${PATH_TO_WORKFLOW}/config.yaml
+CLUSTER_CONFIG=${PATH_TO_WORKFLOW}/cluster.yaml
+```
+3. Run workflow
 **Example:**
 #### Cluster execution
 ```bash
-conda activate assembly_workflow
-PATH_TO_SMK=/home/user/assembly_workflow
-SFILE=${PATH_TO_SMK}/main.smk
-CLUSTER_CONFIG=${PATH_TO_SMK}/cluster.yaml
-CONFIG=${PATH_TO_SMK}/config.yaml
 snakemake \
     --use-singularity \
     --snakefile ${SFILE} \
@@ -51,22 +60,17 @@ snakemake \
     --rerun-incomplete \
     --latency-wait 60 \
     --use-singularity \
-    --singularity-args "--bind /path/to/you/data:/data" \
+    --singularity-args "--bind ${MOUNT_HOST}:${MOUNT_CONTAINER}" \
     --cluster "qsub -V -cwd -P {cluster.project} -q {cluster.queue} -l vf={cluster.mem},p={cluster.cores} -binding linear:{cluster.cores} -o {cluster.output} -e {cluster.error}"
 ```
 #### Local execution
 ```bash
-conda activate assembly_workflow
-PATH_TO_SMK=/home/user/assembly_workflow
-SFILE=${PATH_TO_SMK}/main.smk
-CLUSTER_CONFIG=${PATH_TO_SMK}/cluster.yaml
-CONFIG=${PATH_TO_SMK}/config.yaml
 snakemake \
     --use-singularity \
     --snakefile ${SFILE} \
     --configfile ${CONFIG} ${CLUSTER_CONFIG} \
     --use-singularity \
-    --singularity-args "--bind /path/to/you/data:/data" \
+    --singularity-args "--bind ${MOUNT_HOST}:${MOUNT_CONTAINER}" \
     --cores 4
 ```
 
