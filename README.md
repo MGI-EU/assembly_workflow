@@ -7,9 +7,9 @@
 5. Quality control [QUAST](https://github.com/ablab/quast), [MERQURY](https://github.com/marbl/merqury), [Yak](https://github.com/lh3/yak)
 
 ### Dependencies
-1. [Conda](https://github.com/conda/conda)
-1. [Snakemake](https://snakemake.github.io/)
-3. [Singularity](https://singularity.hpcng.org)
+- [Conda](https://github.com/conda/conda)
+- [Snakemake](https://snakemake.github.io/)
+- [Singularity](https://singularity.hpcng.org)
   
 
 ### Installation
