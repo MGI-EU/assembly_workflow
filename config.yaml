@@ -27,6 +27,6 @@ assembly: 'hifiasm'
 polish_ont: 'pepper'
 polish_short: 'pilon'
 
-# Edit path to singularity container
+# Edit path to singularity container which pulled with command "sudo singularity build --sandbox assembly_workflow/  library://eamozheiko/containers/assembly_workflow:1.4"
 singularity: '/path/to/singularity/container/assembly_workflow'
 
