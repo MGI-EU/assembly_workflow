@@ -39,7 +39,7 @@ conda activate assembly_workflow
 # Edit this paths
 PATH_TO_WORKFLOW=/home/user/assembly_workflow
 MOUNT_HOST=/path/to/host/data
-MOUNT_CONTAINER=/path/to/host/data
+MOUNT_CONTAINER=/path/to/data/in/container
 
 SFILE=${PATH_TO_WORKFLOW}/main.smk
 CLUSTER_CONFIG=${PATH_TO_WORKFLOW}/cluster.yaml
