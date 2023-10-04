@@ -17,9 +17,8 @@ if config.get("paternal_short") and config.get("maternal_short"):
             # QUAST
             ## contiguty
             CONTIGS_0BP=$(grep -m 1 -P "^# contigs \(>= 0 bp\)" {input.quast} | awk '{{print $NF}}')
-            CC=$(echo "scale=2; $CONTIGS_0BP / {params.chr_count}" | bc)
-            CONTIGS_NG50=$(grep -m 1 -P "^NG50" {input.quast} | awk '{{print $NF}}')
-            CONTIGS_NG50_PER_MB=$(echo "scale=2; $CONTIGS_NG50 / 1000000" | bc)
+            NG50=$(grep -m 1 -P "^NG50" {input.quast} | awk '{{print $NF}}')
+            NG50_PER_MB=$(echo "scale=2; $CONTIGS_NG50 / 1000000" | bc)
             ## missasemblies
             MISSASM=$(grep -m 1 -P "^# misassemblies" {input.quast} | awk '{{print $NF}}')
             MISMATCH=$(grep -m 1 -P "^# mismatches per 100 kbp" {input.quast} | awk '{{print $NF}}')
@@ -38,10 +37,10 @@ if config.get("paternal_short") and config.get("maternal_short"):
 
             # Write results to file
             if [ ! -e {output.report} ]; then
-                echo -e "Assembly name\tTotal length\tAligned length\tNG50 (Mb)\tCC\tK-mers completeness\tQV\tSwitch error\tHamming error\tMisassemblies (count)\tMismatches (per 100 kb)\tIndels (per 100kb)" > {output.report}
+                echo -e "Assembly name\tTotal length\tAligned length\tNG50 (Mb)\tContigs Count\tK-mers completeness\tQV\tSwitch error\tHamming error\tMisassemblies (count)\tMismatches (per 100 kb)\tIndels (per 100kb)" > {output.report}
             fi
 
-            echo "{params.sample}\t${{TOTAL_LENGTH:-}}\t${{ALIGNED_LENGTH:-}}\t${{CONTIGS_NG50_PER_MB:-}}\t${{CONTIGS_0BP:-}}\t${{K_COMP:-}}\t${{QV:-}}\t${{SWRATE:-}}\t${{HRATE:-}}\t${{MISSASM:-}}\t${{MISMATCH:-}}\t${{INDELS:-}}" >> {output.report}
+            echo "{params.sample}\t${{TOTAL_LENGTH:-}}\t${{ALIGNED_LENGTH:-}}\t${{NG50_PER_MB:-}}\t${{CONTIGS_0BP:-}}\t${{K_COMP:-}}\t${{QV:-}}\t${{SWRATE:-}}\t${{HRATE:-}}\t${{MISSASM:-}}\t${{MISMATCH:-}}\t${{INDELS:-}}" >> {output.report}
             """
 
 if not config.get("paternal_short") or not config.get("maternal_short"):
