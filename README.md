@@ -47,6 +47,7 @@ CONFIG=${PATH_TO_WORKFLOW}/config.yaml
 CLUSTER_CONFIG=${PATH_TO_WORKFLOW}/cluster.yaml
 ```
 3. Run workflow
+
 **Example:**
 #### Cluster execution
 ```bash
