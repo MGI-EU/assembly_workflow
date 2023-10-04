@@ -3,8 +3,9 @@ workdir: config["outdir"]
 import os
 
 # Create directories if they don't exist
-singularity_cache_dir = f"{outdir}/singularity_cache"
-singularity_tmp_dir = f"{outdir}/singularity_tmp"
+singularity_cache_dir = config["outdir"] + "/singularity_cache"
+singularity_tmp_dir = config["outdir"] + "/singularity_tmp"
+
 
 os.makedirs(singularity_cache_dir, exist_ok=True)
 os.makedirs(singularity_tmp_dir, exist_ok=True)
