@@ -70,7 +70,6 @@ snakemake \
     --use-singularity \
     --snakefile ${SFILE} \
     --configfile ${CONFIG} ${CLUSTER_CONFIG} \
-    --use-singularity \
     --singularity-args "--bind ${MOUNT_HOST}:${MOUNT_CONTAINER},${PATH_TO_WORKFLOW}:${PATH_TO_WORKFLOW}" \
     --cores 4
 ```
