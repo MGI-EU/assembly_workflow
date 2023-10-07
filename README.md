@@ -1,7 +1,7 @@
 ## Snakemake workflow for hybrid assembly
 ### Workflow steps:
 1. Before-assembly correction [Ratatosk](https://github.com/DecodeGenetics/Ratatosk)
-2. Assembly [Shasta](https://github.com/chanzuckerberg/shasta), [Verkko](https://github.com/marbl/verkko), [Hifiasm](https://github.com/chhylp123/hifiasm)
+2. Assembly [Shasta](https://github.com/chanzuckerberg/shasta) or [Verkko](https://github.com/marbl/verkko) or [Hifiasm](https://github.com/chhylp123/hifiasm)
 3. Filtering of small contigs
 4. Polishing [PEPPER](https://github.com/kishwarshafin/pepper/tree/r0.1) + [Pilon](https://github.com/broadinstitute/pilon)
 5. Quality control [QUAST](https://github.com/ablab/quast), [MERQURY](https://github.com/marbl/merqury), [Yak](https://github.com/lh3/yak)
