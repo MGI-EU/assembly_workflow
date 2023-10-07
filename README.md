@@ -61,7 +61,7 @@ snakemake \
     --rerun-incomplete \
     --latency-wait 60 \
     --use-singularity \
-    --singularity-args "--bind ${MOUNT_HOST}:${MOUNT_CONTAINER}" \
+    --singularity-args "--bind ${MOUNT_HOST}:${MOUNT_CONTAINER},${PATH_TO_WORKFLOW}:${PATH_TO_WORKFLOW}" \
     --cluster "qsub -V -cwd -P {cluster.project} -q {cluster.queue} -l vf={cluster.mem},p={cluster.cores} -binding linear:{cluster.cores} -o {cluster.output} -e {cluster.error}"
 ```
 #### Local execution
@@ -71,7 +71,7 @@ snakemake \
     --snakefile ${SFILE} \
     --configfile ${CONFIG} ${CLUSTER_CONFIG} \
     --use-singularity \
-    --singularity-args "--bind ${MOUNT_HOST}:${MOUNT_CONTAINER}" \
+    --singularity-args "--bind ${MOUNT_HOST}:${MOUNT_CONTAINER},${PATH_TO_WORKFLOW}:${PATH_TO_WORKFLOW}" \
     --cores 4
 ```
 
