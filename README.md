@@ -94,11 +94,11 @@ You don't need all this fastq input, you only need HiFi or ONT as the basis of t
 2. **Selection of Correction Tool in Config:**
    - Currently, only Ratatosk is available.
    - Alternatively, use no-correction mode if "correction" variable is not specified in config.
-     - Example: In config, type correction: 'ratatosk'
+     - Example: correction: 'ratatosk'
 
 3. **Selection of Assembly Tool:**
-   - Available options: verkko, shasta, hifiasm.
-     - Example: In config, type assembly: 'verkko'
+   - Available options in config: verkko, shasta, hifiasm.
+     - Example: assembly: 'verkko'
 
 4. **Optional Min Contig Filter:**
    - Default is 0.
