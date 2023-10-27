@@ -42,7 +42,6 @@ MOUNT_HOST=/path/to/host/data
 MOUNT_CONTAINER=/path/to/data/in/container
 
 SFILE=${PATH_TO_WORKFLOW}/main.smk
-CLUSTER_CONFIG=${PATH_TO_WORKFLOW}/cluster.yaml
 CONFIG=${PATH_TO_WORKFLOW}/config.yaml
 CLUSTER_CONFIG=${PATH_TO_WORKFLOW}/cluster.yaml
 ```
