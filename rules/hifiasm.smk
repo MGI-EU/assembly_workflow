@@ -3,7 +3,6 @@ if config.get("paternal_short") and config.get("maternal_short"):
     include: f"{workflow.basedir}/rules/yak.db.smk"
 
 
-
 if config.get("hifi") and not config.get("short") and not config.get("ont") and not config.get("correction"):
     rule hifiasm:
         input:
@@ -14,12 +13,16 @@ if config.get("hifi") and not config.get("short") and not config.get("ont") and 
             config["hifiasm"]["cores"]
         resources:
             mem = config["hifiasm"]["mem"]
+        singularity:
+            config["singularity"]
         shell:
             """
             rm -rf hifiasm
             mkdir -p hifiasm
             cd hifiasm
-            hifiasm -o hifiasm -t {threads} --ul ont.combined.fastq {input.hifi}
+            shasta --help
+            hifiasm
+            hifiasm -o hifiasm -t {threads} {input.hifi}
             awk '/^S/ {{split($4,a,":"); print ">" $2; print $3}}' *.p_utg.gfa > ../assembly.fasta
             """
 
