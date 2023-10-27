@@ -52,7 +52,6 @@ CLUSTER_CONFIG=${PATH_TO_WORKFLOW}/cluster.yaml
 #### Cluster execution
 ```bash
 snakemake \
-    --use-singularity \
     --snakefile ${SFILE} \
     --configfile ${CONFIG} ${CLUSTER_CONFIG} \
     --cluster-config ${CLUSTER_CONFIG} \
@@ -69,7 +68,7 @@ snakemake \
 snakemake \
     --use-singularity \
     --snakefile ${SFILE} \
-    --configfile ${CONFIG} ${CLUSTER_CONFIG} \
+    --configfile ${CONFIG} \
     --singularity-args "--bind ${MOUNT_HOST}:${MOUNT_CONTAINER},${PATH_TO_WORKFLOW}:${PATH_TO_WORKFLOW}" \
     --cores 4
 ```
