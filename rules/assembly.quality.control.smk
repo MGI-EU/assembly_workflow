@@ -4,22 +4,59 @@ if config.get("paternal_short") and config.get("maternal_short"):
     include: f"{workflow.basedir}/rules/yak.db.smk"
 
 
+# Meryl db from ONT
+if not config.get("hifi") and not config.get("short") and config.get("ont"):
+    rule meryl_db:
+        input:
+            fastq = get_files(config["ont"])
+        output:
+            directory("fastq.meryl")
+        threads:
+            config["meryl_db"]["cores"]
+        resources:
+            mem = config["meryl_db"]["mem"]
+        singularity: 
+            config["singularity"]
+        shell:
+            """
+            meryl count compress k=31 threads={threads} {input.fastq} output fastq.meryl
+            """
+            
+# Meryl db from short reads
+if not config.get("hifi") and config.get("short"):
+    rule meryl_db:
+        input:
+            fastq = get_files(config["short"])
+        output:
+            directory("fastq.meryl")
+        threads:
+            config["meryl_db"]["cores"]
+        resources:
+            mem = config["meryl_db"]["mem"]
+        singularity: 
+            config["singularity"]
+        shell:
+            """
+            meryl count compress k=31 threads={threads} {input.fastq} output fastq.meryl
+            """
+            
 # Meryl db from HiFi
-rule meryl_db:
-    input:
-        hifi = get_files(config["hifi"])
-    output:
-        directory("hifi.meryl")
-    threads:
-        config["meryl_db"]["cores"]
-    resources:
-        mem = config["meryl_db"]["mem"]
-    singularity: 
-        config["singularity"]
-    shell:
-        """
-        meryl count compress k=31 threads={threads} {input.hifi} output hifi.meryl
-        """
+if config.get("hifi"):
+    rule meryl_db:
+        input:
+            fastq = get_files(config["hifi"])
+        output:
+            directory("fastq.meryl")
+        threads:
+            config["meryl_db"]["cores"]
+        resources:
+            mem = config["meryl_db"]["mem"]
+        singularity: 
+            config["singularity"]
+        shell:
+            """
+            meryl count compress k=31 threads={threads} {input.fastq} output fastq.meryl
+            """
 
 
 # QUAST
@@ -62,7 +99,7 @@ if not config.get("path_to_reference"):
 rule merqury:
     input:
         assembly = "assembly.polished.ont.short.fasta",
-        meryl_db = "hifi.meryl"
+        meryl_db = "fastq.meryl"
     output:
         "merqury/completeness.stats",
         "merqury/merqury.qv"
