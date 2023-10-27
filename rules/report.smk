@@ -28,7 +28,7 @@ if config.get("paternal_short") and config.get("maternal_short"):
             TOTAL_LENGTH=$(grep -m 1 -P "^Total length \(>= 0 bp\)" {input.quast} | awk '{{print $NF}}')
 
             # Merqury
-            K_COMP=$(awk '{{print $5}}' {input.merqury_k_completeness})
+            K_COMP=$(cat {input.merqury_k_completeness} | head -n1 |  awk '{{print $5}}')
             QV=$(awk '{{print $4}}' {input.merqury_qv})
             
             # Yak
@@ -72,7 +72,7 @@ if not config.get("paternal_short") or not config.get("maternal_short"):
             TOTAL_LENGTH=$(grep -m 1 -P "^Total length \(>= 0 bp\)" {input.quast} | awk '{{print $NF}}')
 
             # Merqury
-            K_COMP=$(awk '{{print $5}}' {input.merqury_k_completeness})
+            K_COMP=$(cat {input.merqury_k_completeness} | head -n1 |  awk '{{print $5}}')
             QV=$(awk '{{print $4}}' {input.merqury_qv})
 
 
