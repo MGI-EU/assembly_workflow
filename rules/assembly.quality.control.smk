@@ -19,7 +19,7 @@ if not config.get("hifi") and not config.get("short") and config.get("ont"):
             config["singularity"]
         shell:
             """
-            meryl count compress k=31 threads={threads} {input.fastq} output fastq.meryl
+            meryl count k=31 threads={threads} {input.fastq} output fastq.meryl
             """
             
 # Meryl db from short reads
@@ -37,7 +37,7 @@ if not config.get("hifi") and config.get("short"):
             config["singularity"]
         shell:
             """
-            meryl count compress k=31 threads={threads} {input.fastq} output fastq.meryl
+            meryl count k=31 threads={threads} {input.fastq} output fastq.meryl
             """
             
 # Meryl db from HiFi
@@ -55,9 +55,8 @@ if config.get("hifi"):
             config["singularity"]
         shell:
             """
-            meryl count compress k=31 threads={threads} {input.fastq} output fastq.meryl
+            meryl count k=31 threads={threads} {input.fastq} output fastq.meryl
             """
-
 
 # QUAST
 if config.get("path_to_reference"):
