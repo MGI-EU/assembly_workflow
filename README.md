@@ -25,7 +25,7 @@ conda install -c conda-forge singularity -y
 sudo singularity build --sandbox assembly_workflow/  library://eamozheiko/containers/assembly_workflow:1.4
 
 # Pull Snakemake workflow
-git clone https://github.com/eamozheiko/assembly_workflow.git
+git clone https://github.com/MGI-EU/assembly_workflow.git
 ```
 
 ### Quick start
