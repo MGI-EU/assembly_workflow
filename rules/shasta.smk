@@ -15,7 +15,6 @@ if not config.get("correction"):
             config["singularity"]
         shell:
             """
-            conda env list
             rm -rf shasta
             shasta \
                 --assemblyDirectory shasta \
@@ -41,7 +40,6 @@ if config.get("correction"):
             config["singularity"]
         shell:
             """
-            conda env list
             rm -rf shasta
             shasta \
                 --assemblyDirectory shasta \
