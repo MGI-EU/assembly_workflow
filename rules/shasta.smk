@@ -4,8 +4,8 @@ import shutil
 import gzip
 
 def unzip_and_collect_files(input_files):
-    tmp_dir = "tmp_unzip"
-    if not os.path.exists(tmp_dir):
+    tmp_dir = os.path.join(config["outdir"], "tmp_unzip")
+if not os.path.exists(tmp_dir):
         os.makedirs(tmp_dir)
     
     all_files = []
