@@ -20,8 +20,6 @@ if config.get("hifi") and not config.get("paternal_short") and not config.get("o
             rm -rf hifiasm
             mkdir -p hifiasm
             cd hifiasm
-            shasta --help
-            hifiasm
             hifiasm -o hifiasm -t {threads} {input.hifi}
             awk '/^S/ {{split($4,a,":"); print ">" $2; print $3}}' *.p_utg.gfa > ../assembly.fasta
             """
