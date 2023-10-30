@@ -8,8 +8,7 @@ if config.get("paternal_short") and config.get("maternal_short"):
         output:
             report = "result/report.tsv"
         params:
-            sample = config.get("sample", "sample_name"),
-            chr_count = config.get("chromosome_count", 24)
+            sample = config.get("sample", "sample_name")
         shell:
             """
             set +e
@@ -53,8 +52,7 @@ if not config.get("paternal_short") or not config.get("maternal_short"):
         output:
             report = "result/report.tsv"
         params:
-            sample = config.get("sample", "sample_name"),
-            chr_count = config.get("chromosome_count", 24)
+            sample = config.get("sample", "sample_name")
         shell:
             """
             set +e
