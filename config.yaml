@@ -17,7 +17,7 @@ threshold: 2000
 chromosome_count: 24
 polish_model: '/path/to/pepper/polish/model/PromethION_r941_guppy305_HAC_human.pkl'
 
-# You can delite correction, or polish rows. This will result in excluding this steps from workflow
+# You can delete correction, or polish rows. This will result in excluding this steps from workflow
 # assembly: shasta, verkko or hifiasm
 # correction: ratatosk (only)
 # polish_ont: pepper (only)
