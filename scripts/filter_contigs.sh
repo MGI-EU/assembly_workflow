@@ -39,6 +39,6 @@ else
     exit 1
 fi
 
-#rm -f lens
+rm -f lens
 
 exit
