@@ -12,6 +12,9 @@ if config.get("paternal_short") and config.get("maternal_short"):
         shell:
             """
             set +e
+            rm assembly.fasta
+            rm assembly.filtred.fasta
+            rm assembly.polished.ont.fasta
             # QUAST
             ## contiguty
             CONTIGS_0BP=$(grep -m 1 -P "^# contigs \(>= 0 bp\)" {input.quast} | awk '{{print $NF}}')
@@ -56,6 +59,9 @@ if not config.get("paternal_short") or not config.get("maternal_short"):
         shell:
             """
             set +e
+            rm assembly.fasta
+            rm assembly.filtred.fasta
+            rm assembly.polished.ont.fasta
             # QUAST
             ## contiguty
             CONTIGS_0BP=$(grep -m 1 -P "^# contigs \(>= 0 bp\)" {input.quast} | awk '{{print $NF}}')
